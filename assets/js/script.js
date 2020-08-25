@@ -73,10 +73,11 @@ var count = 35;
 
 // Display the count in the browser window
 var myTimer = function () {
-    // Alert the user when time is up
+    // Alert the user when time is up and end the quiz
     if (count < 0) {
             document.getElementById("count").innerHTML = "Done";
             clearInterval(interval);
+            endQuiz();
             return;
     }
     else {
@@ -107,15 +108,9 @@ var startButtonHandler = function (event) {
         startTimer();
         hideDiv(".intro");
         showDiv(".question-wrapper");
-        startQuiz();
+        runQuiz();
     }    
 }
-
-
-
-// Scoring Function
-
-// Stop the quiz
 
 // A function to population the question and the answer buttons
 var createQuestion = function (questionID) {
@@ -128,13 +123,13 @@ var createQuestion = function (questionID) {
     questionWrapperEl.querySelector("#opt4").textContent = quizQuestions[questionID].ans4;
 }
 
-// A function to start the quiz
-var startQuiz = function() {
-    var numQuestions = quizQuestions.length;
-    console.log(numQuestions);
-    var currentQuestion = 0;
-    createQuestion(currentQuestion);
-}
+// // A function to start the quiz
+// var startQuiz = function() {
+//     var numQuestions = quizQuestions.length;
+//     console.log(numQuestions);
+//     var currentQuestion = 0;
+//     createQuestion(currentQuestion);
+// }
 
 // A function to check the answer
 var checkAnswer = function () {
@@ -148,14 +143,41 @@ var checkAnswer = function () {
     if (answerChoice === localCorrectAnswer) {
         document.getElementById("correct").innerHTML = "<p>The last answer was correct!</p>";
         points = points + 1;
+        currentQuestion++;
+        console.log(currentQuestion);
     }
     else {
         document.getElementById("correct").innerHTML = "<p>The last answer was incorrect!</p>";
         count = count - 10;
+        currentQuestion++;
+        console.log(currentQuestion);
     }
+    if (currentQuestion >= totalQuestions || count < 0) {
+        console.log("It's Over!")
+        endQuiz();
+    }
+}
+
+// A function to run the quiz
+var runQuiz = function() {
+    // for (i = 0; i < totalQuestions - 2; i++) {
+    //     console.log(i);
+    //     console.log(totalQuestions);
+    //     console.log(currentQuestion);
+        createQuestion(currentQuestion);
+    // }    
+}
+
+// A function to end the quiz
+var endQuiz = function() {
+    clearInterval(interval);
+    hideDiv(".question-wrapper");
+    pageContentEl.querySelector(".outro").innerHTML = "<h3>All Done!</h3>";
 }
 
 // Event Listeners
 introContentEl.addEventListener("click", startButtonHandler);
 
 questionWrapperEl.addEventListener("click", checkAnswer);
+
+questionWrapperEl.addEventListener("click", runQuiz);
