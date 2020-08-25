@@ -133,7 +133,7 @@
   .answer-choices {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: left;
     margin: 10px 0 5px 0;
     justify-content: space-between;
   }
@@ -172,6 +172,16 @@
     margin: 3px;
     background: var(--secondary);
     color: #fff;
+  }
+
+  .answer-button {
+    color: var(--grey);
+    padding: 15px 15px;
+    border: 2px solid var(--grey);
+    background: var(--tertiary);
+    border-radius: 12px;
+    width: 100%;
+    justify-content: left;
   }
   
 
