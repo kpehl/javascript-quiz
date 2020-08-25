@@ -23,50 +23,48 @@
 
 
 
-// Declare variables for the question and answer arrays
-var question, ans1, ans2, ans3, ans4, answer
+// Declare variables for the question and answer array
+var question, ans1, ans2, ans3, ans4, correctAnswer
 
 
 // Question array
 var quizQuestions = [
-    {question: "Question 1", ans1: "Q1Answer1", ans2: "Q1Answer2", ans3: "Q1Answer3", ans4: "Q1Answer4"},
-    {question: "Question 2", ans1: "Q2Answer1", ans2: "Q2Answer2", ans3: "Q2Answer3", ans4: "Q2Answer4"},
-    {question: "Question 3", ans1: "Q3Answer1", ans2: "Q3Answer2", ans3: "Q3Answer3", ans4: "Q3Answer4"},
-    {question: "Question 4", ans1: "Q4Answer1", ans2: "Q4Answer2", ans3: "Q4Answer3", ans4: "Q4Answer4"},
-    {question: "Question 5", ans1: "Q5Answer1", ans2: "Q5Answer2", ans3: "Q5Answer3", ans4: "Q5Answer4"},
-    {question: "Question 6", ans1: "Q6Answer1", ans2: "Q6Answer2", ans3: "Q6Answer3", ans4: "Q6Answer4"},
-    {question: "Question 7", ans1: "Q7Answer1", ans2: "Q7Answer2", ans3: "Q7Answer3", ans4: "Q7Answer4"},
-    {question: "Question 8", ans1: "Q8Answer1", ans2: "Q8Answer2", ans3: "Q8Answer3", ans4: "Q8Answer4"},
-    {question: "Question 9", ans1: "Q9Answer1", ans2: "Q9Answer2", ans3: "Q9Answer3", ans4: "Q9Answer4"},
-    {question: "Question 10", ans1: "Q10Answer1", ans2: "Q10Answer2", ans3: "Q10Answer3", ans4: "Q10Answer4"}
+    {question: "Question 1", ans1: "Q1Answer1", ans2: "Q1Answer2", ans3: "Q1Answer3", ans4: "Q1Answer4", correctAnswer: "Q1Answer1"},
+    {question: "Question 2", ans1: "Q2Answer1", ans2: "Q2Answer2", ans3: "Q2Answer3", ans4: "Q2Answer4", correctAnswer: "Q2Answer1"},
+    {question: "Question 3", ans1: "Q3Answer1", ans2: "Q3Answer2", ans3: "Q3Answer3", ans4: "Q3Answer4", correctAnswer: "Q3Answer1"},
+    {question: "Question 4", ans1: "Q4Answer1", ans2: "Q4Answer2", ans3: "Q4Answer3", ans4: "Q4Answer4", correctAnswer: "Q4Answer1"},
+    {question: "Question 5", ans1: "Q5Answer1", ans2: "Q5Answer2", ans3: "Q5Answer3", ans4: "Q5Answer4", correctAnswer: "Q5Answer1"},
+    {question: "Question 6", ans1: "Q6Answer1", ans2: "Q6Answer2", ans3: "Q6Answer3", ans4: "Q6Answer4", correctAnswer: "Q6Answer1"},
+    {question: "Question 7", ans1: "Q7Answer1", ans2: "Q7Answer2", ans3: "Q7Answer3", ans4: "Q7Answer4", correctAnswer: "Q7Answer1"},
+    {question: "Question 8", ans1: "Q8Answer1", ans2: "Q8Answer2", ans3: "Q8Answer3", ans4: "Q8Answer4", correctAnswer: "Q8Answer1"},
+    {question: "Question 9", ans1: "Q9Answer1", ans2: "Q9Answer2", ans3: "Q9Answer3", ans4: "Q9Answer4", correctAnswer: "Q9Answer1"},
+    {question: "Question 10", ans1: "Q10Answer1", ans2: "Q10Answer2", ans3: "Q10Answer3", ans4: "Q10Answer4", correctAnswer: "Q10Answer1"}
 ]
 
-// Answer array
-var quizAnswers = [
-    {answer: "Q1Answer1"},
-    {answer: "Q2Answer1"},
-    {answer: "Q3Answer1"},
-    {answer: "Q4Answer1"},
-    {answer: "Q5Answer1"},
-    {answer: "Q6Answer1"},
-    {answer: "Q7Answer1"},
-    {answer: "Q8Answer1"},
-    {answer: "Q9Answer1"},
-    {answer: "Q10Answer1"},
-]
 
 // Initialization of variables for the points and the number of questions
 var points = 0;
 var totalQuestions = 10;
+
+// Define an element for the main page content
+var pageContentEl = document.querySelector(".page-content");
+
+// Define an element for the intro page content
+var introContentEl = document.querySelector(".intro");
+
+// Define an element for the question wrapper content
+var questionWrapperEl = document.querySelector(".question-wrapper");
+
+// Set the question wrapper to be hidden when the page is loaded
+questionWrapperEl.style.display = "none";
+
 
 // Quiz Timer
 // This timer will display a countdown second by second and alert the user when time is up
 
 // Start the timer when the Start button is clicked
 var startTimer = function() {
-    document.getElementById("start-btn").onclick = function () {
-        interval = setInterval(myTimer, 1000);
-    }
+    interval = setInterval(myTimer, 1000);
 }
 
 // Set the time in seconds for the timer to run
@@ -87,7 +85,31 @@ var myTimer = function () {
     }
 }
 
-startTimer();
+// Hide a division not in use
+var hideDiv = function(hideID) {
+    var hideDivEl = document.querySelector(hideID);
+    hideDivEl.style.display = "none";
+}
+
+// Show a division that was hidden
+var showDiv = function(showID) {
+    var showDivEl = document.querySelector(showID);
+    showDivEl.style.display = "block";
+}
+
+// Start button handler
+var startButtonHandler = function (event) {
+    console.log("click");
+    var targetEl = event.target;
+    console.log(event.target);
+    if (targetEl.matches(".start-btn")) {
+        startTimer();
+        hideDiv(".intro");
+        showDiv(".question-wrapper");
+    }    
+}
+
+introContentEl.addEventListener("click", startButtonHandler);
 
 // Scoring Function
 
@@ -96,9 +118,6 @@ startTimer();
 // Stop the quiz
 
 var questionID = 0;
-console.log(quizQuestions[questionID].ans1)
-// document.getElementById("question").innerHTML = quizQuestions[questionID].question;
-// document.getElementById("opt1").innerHTML = quizQuestions[questionID].ans1;
 
 // A function to create the question and the answer buttons
 var createQuestion = function () {
