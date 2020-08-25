@@ -69,7 +69,7 @@ var startTimer = function() {
 }
 
 // Set the time in seconds for the timer to run
-var count = 5;
+var count = 35;
 
 // Display the count in the browser window
 var myTimer = function () {
@@ -147,9 +147,11 @@ var checkAnswer = function () {
     console.log(localCorrectAnswer);
     if (answerChoice === localCorrectAnswer) {
         document.getElementById("correct").innerHTML = "<p>The last answer was correct!</p>";
+        points = points + 1;
     }
     else {
         document.getElementById("correct").innerHTML = "<p>The last answer was incorrect!</p>";
+        count = count - 10;
     }
 }
 
