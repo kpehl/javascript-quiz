@@ -29,22 +29,23 @@ var question, ans1, ans2, ans3, ans4, correctAnswer
 
 // Question array
 var quizQuestions = [
-    {question: "Question 1", ans1: "Q1Answer1", ans2: "Q1Answer2", ans3: "Q1Answer3", ans4: "Q1Answer4", correctAnswer: "Q1Answer1"},
-    {question: "Question 2", ans1: "Q2Answer1", ans2: "Q2Answer2", ans3: "Q2Answer3", ans4: "Q2Answer4", correctAnswer: "Q2Answer1"},
-    {question: "Question 3", ans1: "Q3Answer1", ans2: "Q3Answer2", ans3: "Q3Answer3", ans4: "Q3Answer4", correctAnswer: "Q3Answer1"},
-    {question: "Question 4", ans1: "Q4Answer1", ans2: "Q4Answer2", ans3: "Q4Answer3", ans4: "Q4Answer4", correctAnswer: "Q4Answer1"},
-    {question: "Question 5", ans1: "Q5Answer1", ans2: "Q5Answer2", ans3: "Q5Answer3", ans4: "Q5Answer4", correctAnswer: "Q5Answer1"},
-    {question: "Question 6", ans1: "Q6Answer1", ans2: "Q6Answer2", ans3: "Q6Answer3", ans4: "Q6Answer4", correctAnswer: "Q6Answer1"},
-    {question: "Question 7", ans1: "Q7Answer1", ans2: "Q7Answer2", ans3: "Q7Answer3", ans4: "Q7Answer4", correctAnswer: "Q7Answer1"},
-    {question: "Question 8", ans1: "Q8Answer1", ans2: "Q8Answer2", ans3: "Q8Answer3", ans4: "Q8Answer4", correctAnswer: "Q8Answer1"},
-    {question: "Question 9", ans1: "Q9Answer1", ans2: "Q9Answer2", ans3: "Q9Answer3", ans4: "Q9Answer4", correctAnswer: "Q9Answer1"},
-    {question: "Question 10", ans1: "Q10Answer1", ans2: "Q10Answer2", ans3: "Q10Answer3", ans4: "Q10Answer4", correctAnswer: "Q10Answer1"}
+    {question: "Question 1", ans1: "Q1Answer1", ans2: "Q1Answer2", ans3: "Q1Answer3", ans4: "Q1Answer4", correctAnswer: "opt1"},
+    {question: "Question 2", ans1: "Q2Answer1", ans2: "Q2Answer2", ans3: "Q2Answer3", ans4: "Q2Answer4", correctAnswer: "opt1"},
+    {question: "Question 3", ans1: "Q3Answer1", ans2: "Q3Answer2", ans3: "Q3Answer3", ans4: "Q3Answer4", correctAnswer: "opt1"},
+    {question: "Question 4", ans1: "Q4Answer1", ans2: "Q4Answer2", ans3: "Q4Answer3", ans4: "Q4Answer4", correctAnswer: "opt1"},
+    {question: "Question 5", ans1: "Q5Answer1", ans2: "Q5Answer2", ans3: "Q5Answer3", ans4: "Q5Answer4", correctAnswer: "opt1"},
+    {question: "Question 6", ans1: "Q6Answer1", ans2: "Q6Answer2", ans3: "Q6Answer3", ans4: "Q6Answer4", correctAnswer: "opt1"},
+    {question: "Question 7", ans1: "Q7Answer1", ans2: "Q7Answer2", ans3: "Q7Answer3", ans4: "Q7Answer4", correctAnswer: "opt1"},
+    {question: "Question 8", ans1: "Q8Answer1", ans2: "Q8Answer2", ans3: "Q8Answer3", ans4: "Q8Answer4", correctAnswer: "opt1"},
+    {question: "Question 9", ans1: "Q9Answer1", ans2: "Q9Answer2", ans3: "Q9Answer3", ans4: "Q9Answer4", correctAnswer: "opt1"},
+    {question: "Question 10", ans1: "Q10Answer1", ans2: "Q10Answer2", ans3: "Q10Answer3", ans4: "Q10Answer4", correctAnswer: "opt1"}
 ]
 
 
 // Initialization of variables for the points and the number of questions
 var points = 0;
-var totalQuestions = 10;
+var currentQuestion = 0;
+var totalQuestions = quizQuestions.length;
 
 // Define an element for the main page content
 var pageContentEl = document.querySelector(".page-content");
@@ -136,19 +137,20 @@ var startQuiz = function() {
 }
 
 // A function to check the answer
-var checkAnswer = function (currentQuestion, answerChoice) {
+var checkAnswer = function () {
     console.log(currentQuestion);
     var targetEl = event.target;
     console.log(targetEl);
     var answerChoice = targetEl.id;
     console.log(answerChoice);
-    // if (targetEl.matches
-    // if (answerChoice === quizQuestions[currentQuestion].correctAnswer) {
-    //     document.querySelector.getElementById(".correct").innerHTML = "The last answer was correct!";
-    // }
-    // else {
-    //     document.querySelector.getElementById(".correct").innerHTML = "The last answer was incorrect!";
-    // }
+    var localCorrectAnswer = quizQuestions[currentQuestion].correctAnswer;
+    console.log(localCorrectAnswer);
+    if (answerChoice === localCorrectAnswer) {
+        document.getElementById("correct").innerHTML = "<p>The last answer was correct!</p>";
+    }
+    else {
+        document.getElementById("correct").innerHTML = "<p>The last answer was incorrect!</p>";
+    }
 }
 
 // Event Listeners
