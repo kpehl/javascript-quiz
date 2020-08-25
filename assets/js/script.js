@@ -106,80 +106,52 @@ var startButtonHandler = function (event) {
         startTimer();
         hideDiv(".intro");
         showDiv(".question-wrapper");
+        startQuiz();
     }    
 }
 
-introContentEl.addEventListener("click", startButtonHandler);
+
 
 // Scoring Function
 
-// Run the quiz
-
 // Stop the quiz
 
-var questionID = 0;
-
-// A function to create the question and the answer buttons
-var createQuestion = function () {
-    // var QuestionEl = document.createElement("div")
-    // QuestionEl.className = "question";
-    // document.getElementById("question").innerHTML = "<h3 class = 'question'>" + quizQuestions[questionID].question + "</h3>";
+// A function to population the question and the answer buttons
+var createQuestion = function (questionID) {
+    console.log(questionID);
+    console.log(quizQuestions[questionID]);
     document.getElementById("question").innerHTML = quizQuestions[questionID].question;
-    document.getElementById("opt1").innerHTML = "<button class = 'answer-button'>" + quizQuestions[questionID].ans1 + "</button>";
-    document.getElementById("opt2").innerHTML = "<button class = 'answer-button'>" + quizQuestions[questionID].ans2 + "</button>";
-    document.getElementById("opt3").innerHTML = "<button class = 'answer-button'>" + quizQuestions[questionID].ans3 + "</button>";
-    document.getElementById("opt4").innerHTML = "<button class = 'answer-button'>" + quizQuestions[questionID].ans4 + "</button>";
-
-
-        // // Add HTML content to the div
-        // taskInfoEl.innerHTML = "<h3 class='task-name'>" + taskDataObj.name + "</h3><span class='task-type'>" + taskDataObj.type + "</span>";
-        // listItemEl.appendChild(taskInfoEl);
-    
-        // // Add the task actions to the div
-        // var taskActionsEl = createTaskActions(taskIdCounter);
-        // listItemEl.appendChild(taskActionsEl);
+    questionWrapperEl.querySelector("#opt1").textContent = quizQuestions[questionID].ans1;
+    questionWrapperEl.querySelector("#opt2").textContent = quizQuestions[questionID].ans2;
+    questionWrapperEl.querySelector("#opt3").textContent = quizQuestions[questionID].ans3;
+    questionWrapperEl.querySelector("#opt4").textContent = quizQuestions[questionID].ans4;
 }
 
-// A function to create the quiz answer buttons
-// var createQuestion = function(questionID) {
-//     // Create a new div element to hold the answer choices
-//     var questionContainerEl = document.createElement("div");
-//     questionContainerEl.className = "answer-list";
+// A function to start the quiz
+var startQuiz = function() {
+    var numQuestions = quizQuestions.length;
+    console.log(numQuestions);
+    var currentQuestion = 0;
+    createQuestion(currentQuestion);
+}
 
-//     // Create a button for answer #1 and add it to the div
-//     var ans1ButtonEl = document.createElement("button");
-//     ans1ButtonEl.textContent = quizQuestions[questionID].ans1;
-//     ans1ButtonEl.className = "btn answer-item";
-//     ans1ButtonEl.setAttribute("data-answer-id", questionID);
-//     questionContainerEl.appendChild(ans1ButtonEl);
+// A function to check the answer
+var checkAnswer = function (currentQuestion, answerChoice) {
+    console.log(currentQuestion);
+    var targetEl = event.target;
+    console.log(targetEl);
+    var answerChoice = targetEl.id;
+    console.log(answerChoice);
+    // if (targetEl.matches
+    // if (answerChoice === quizQuestions[currentQuestion].correctAnswer) {
+    //     document.querySelector.getElementById(".correct").innerHTML = "The last answer was correct!";
+    // }
+    // else {
+    //     document.querySelector.getElementById(".correct").innerHTML = "The last answer was incorrect!";
+    // }
+}
 
-//     // Create a button for answer #2 and add it to the div
-//     var ans2ButtonEl = document.createElement("button");
-//     ans2ButtonEl.textContent = quizQuestions[questionID].ans2;
-//     ans2ButtonEl.className = "btn answer-item";
-//     ans2ButtonEl.setAttribute("data-answer-id", questionID);
-//     questionContainerEl.appendChild(ans2ButtonEl);
+// Event Listeners
+introContentEl.addEventListener("click", startButtonHandler);
 
-//     // Create a button for answer #3 and add it to the div
-//     var ans3ButtonEl = document.createElement("button");
-//     ans3ButtonEl.textContent = quizQuestions[questionID].ans3;
-//     ans3ButtonEl.className = "btn answer-item";
-//     ans3ButtonEl.setAttribute("data-answer-id", questionID);
-//     questionContainerEl.appendChild(ans3ButtonEl);
-
-//     // Create a button for answer #4 and add it to the div
-//     var ans4ButtonEl = document.createElement("button");
-//     ans4ButtonEl.textContent = quizQuestions[questionID].ans4;
-//     ans4ButtonEl.className = "btn answer-item";
-//     ans4ButtonEl.setAttribute("data-answer-id", questionID);
-//     questionContainerEl.appendChild(ans4ButtonEl);
-
-//     console.log(questionContainerEl);
-
-//     // Return the container
-//     return questionContainerEl;
-
-// }
-
-createQuestion();
-
+questionWrapperEl.addEventListener("click", checkAnswer);

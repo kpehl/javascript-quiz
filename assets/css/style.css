@@ -118,8 +118,6 @@
   
   .answer-item {
     color: var(--grey);
-    padding: 15px 15px;
-    border: 2px solid var(--grey);
     background: var(--tertiary);
     border-radius: 12px;
     margin-bottom: 20px;
@@ -176,7 +174,8 @@
 
   .answer-button {
     color: var(--grey);
-    padding: 15px 15px;
+    padding: 25px 25px;
+    margin: 0;
     border: 2px solid var(--grey);
     background: var(--tertiary);
     border-radius: 12px;
