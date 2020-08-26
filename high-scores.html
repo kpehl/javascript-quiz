@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Quiz High Scores</title>
+    <link rel = "stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <header style="height: 125px">
+        <h1 class = "page-title">JavaScript Quiz High Scores</h1>
+    </header>
+    <main class = "page-content">
+        <section class = "high-scores">
+            <h2>High Scores</h2>
+            <div class = "score-content">
+                <ul id = "score-list"></ul>
+            </div>
+            <div class = "score-content score-buttons">
+                <button class = "btn" id = "go-back" onclick = "window.location.href='./index.html'">Go Back</button>
+                <button class = "btn" id = "clear-data">Clear High Scores</button>
+            </div>
+        </section>        
+    </main>
+    <script src="./assets/js/scores-script.js"></script>
+</body>
+</html>

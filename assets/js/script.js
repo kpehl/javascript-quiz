@@ -68,9 +68,6 @@ outroContentEl.style.display = "none";
 // Define an element for the high scores
 var highScoresEl = document.querySelector(".high-scores");
 
-// Set the high scores to be hidden when the page is loaded
-highScoresEl.style.display = "none";
-
 // Define an element for the score report
 var scoreReportEl = document.querySelector("#score-report");
 
@@ -176,6 +173,7 @@ var endQuiz = function() {
     showDiv(".outro")
     scoreReportEl.textContent = "Your score is " + points +  ".";
 }
+
 
 // Event Listeners
 introContentEl.addEventListener("click", startButtonHandler);

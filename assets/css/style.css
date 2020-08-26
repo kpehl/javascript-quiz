@@ -193,8 +193,7 @@
     top: 0;
   }
   
-  .start-btn,
-  .go-back-btn {
+  .start-btn {
     font-size: 2.4rem;
     padding: 15px 17px;
     margin: 3px;
@@ -211,6 +210,31 @@
     border-radius: 12px;
     width: 100%;
     justify-content: left;
+  }
+
+.high-scores {
+    width: 85%;
+    text-align: center;
+}
+
+  .high-scores h2 {
+      color: var(--secondary);
+      padding: 10px 25px;
+      font-size: 2.75rem;
+  }
+
+  .score-content {
+      padding: 5px 25px;
+      display: flex;
+      gap: 25px;
+      text-align: center;
+  }
+
+  .score-buttons {
+      flex: 1;
+      text-align: center;
+      flex-wrap: wrap;
+      justify-content: center;
   }
   
 
