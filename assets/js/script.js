@@ -65,8 +65,14 @@ var outroContentEl = document.querySelector(".outro");
 // Set the outro to be hidden when the page is loaded
 outroContentEl.style.display = "none";
 
+// Define an element for the score submit button
+var scoreBtnEl = document.querySelector("#save-score");
+
 // Define an element for the high scores
 var highScoresEl = document.querySelector(".high-scores");
+
+// Define an element for the score initals form
+var highScoreFormEl = document.querySelector("#score-form");
 
 // Define an element for the score report
 var scoreReportEl = document.querySelector("#score-report");
@@ -175,9 +181,55 @@ var endQuiz = function() {
 }
 
 
+
+
+// A function to save the score to local storage 
+var saveScore = function() {
+    // Prevent a page refresh, losing local data
+    event.preventDefault();
+
+    // Get the user input from the form
+    var scoreInitialsInput = document.querySelector("input[name='initials']").value;
+
+    // Validate that an input was provided
+    if (!scoreInitialsInput) {
+        alert("Please enter your initals to save your score!")
+    }
+
+    // Package the initials and score as an object.
+    var scoreDataObj = {
+        score: points,
+        initials: scoreInitialsInput,
+    };
+
+    // retrieve the current high score list
+    var scores = localStorage.getItem("scores");
+
+    // if the localStorage does not have any values, set array to empty, otherwise parse into object
+    if (!scores) {
+        var scores = [];
+    }
+    else {
+        scores = JSON.parse(scores);
+    }
+
+    // Add the new score to the array
+    scores.push(scoreDataObj);
+
+    // Save the new high score list to localStorage
+    localStorage.setItem("scores", JSON.stringify(scores));
+
+    alert("saved!")
+}
+
+
+
+
 // Event Listeners
 introContentEl.addEventListener("click", startButtonHandler);
 
 questionWrapperEl.addEventListener("click", checkAnswer);
 
 questionWrapperEl.addEventListener("click", runQuiz);
+
+scoreBtnEl.addEventListener("click", saveScore);
