@@ -3,9 +3,9 @@
   }
   
   :root {
-    --primary: #e168ff;
-    --secondary: #774980;
-    --tertiary: rgb(248, 192, 253);
+    --primary: #004d99;
+    --secondary: #000099;
+    --tertiary: #cee6ff;
     --grey: #333;
     font-size: 62.5%;
   }
@@ -40,18 +40,19 @@
   .header-grid-container {
       width: 100%;
       display: grid;
-      grid-template-columns: 80% auto;
-      grid-gap: 50px;
+      grid-template-columns: auto auto;
+      gap: 50px;
       justify-content: space-between;
   }
 
   .header-group {
     margin: 10px 6px 10px 0;
-    flex: 1;
+    display: flex;
+    flex: 1 1;
   }
 
   .page-title {
-    color: var(--primary);
+    color: var(--tertiary);
     margin-bottom: 5px;
     margin-top: 0;
     font-size: 4.5rem;
@@ -60,6 +61,12 @@
   p,
   li {
     font-size: 1.6rem;
+  }
+
+  a {
+      font-size: 1.6rem;
+      color: var(--tertiary);
+      text-decoration: underline;
   }
   
   form {
@@ -99,6 +106,7 @@
   
   .quiz-wrapper {
     flex: 1;
+    justify-content: center;
     margin: 0 20px 20px;
   }
   
@@ -139,7 +147,8 @@
   .outro {
       display: flex;
       flex-wrap: wrap;
-      align-items: left;
+      align-items: center;
+      text-justify: center;
   }
 
   .outro h3 {

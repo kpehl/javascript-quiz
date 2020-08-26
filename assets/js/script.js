@@ -59,6 +59,18 @@ var questionWrapperEl = document.querySelector(".question-wrapper");
 // Set the question wrapper to be hidden when the page is loaded
 questionWrapperEl.style.display = "none";
 
+// Define an element for the outro content
+var outroContentEl = document.querySelector(".outro");
+
+// Set the outro to be hidden when the page is loaded
+outroContentEl.style.display = "none";
+
+//Define an element for the high scores
+var highScoresEl = document.querySelector(".high-scores");
+
+// Set the high scores to be hidden when the page is loaded
+highScoresEl.style.display = "none";
+
 
 // Quiz Timer
 // This timer will display a countdown second by second and alert the user when time is up
@@ -68,20 +80,20 @@ var startTimer = function() {
     interval = setInterval(myTimer, 1000);
 }
 
-// Set the time in seconds for the timer to run
-var count = 35;
+// Set the time in seconds for the timer to run, giving the user 15 seconds per question
+var count = 15 * totalQuestions;
 
 // Display the count in the browser window
 var myTimer = function () {
     // Alert the user when time is up and end the quiz
     if (count < 0) {
-            document.getElementById("count").innerHTML = "Done";
+            document.getElementById("count").innerHTML = "Out of Time";
             clearInterval(interval);
             endQuiz();
             return;
     }
     else {
-        document.getElementById("count").innerHTML = count;
+        document.getElementById("count").innerHTML = "<h3>Time: " + count + "</h3>";
         console.log(count);
         count--;
     }
@@ -160,19 +172,20 @@ var checkAnswer = function () {
 
 // A function to run the quiz
 var runQuiz = function() {
-    // for (i = 0; i < totalQuestions - 2; i++) {
-    //     console.log(i);
-    //     console.log(totalQuestions);
-    //     console.log(currentQuestion);
-        createQuestion(currentQuestion);
-    // }    
+    if (currentQuestion === totalQuestions) {
+        endQuiz();
+    }
+    else {
+        createQuestion(currentQuestion); 
+    }   
 }
 
 // A function to end the quiz
 var endQuiz = function() {
     clearInterval(interval);
     hideDiv(".question-wrapper");
-    pageContentEl.querySelector(".outro").innerHTML = "<h3>All Done!</h3>";
+    showDiv(".outro")
+    pageContentEl.querySelector(".outro").innerHTML = "<h3>It's Over!</h3>";
 }
 
 // Event Listeners
