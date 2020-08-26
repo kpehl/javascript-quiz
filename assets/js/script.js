@@ -65,11 +65,14 @@ var outroContentEl = document.querySelector(".outro");
 // Set the outro to be hidden when the page is loaded
 outroContentEl.style.display = "none";
 
-//Define an element for the high scores
+// Define an element for the high scores
 var highScoresEl = document.querySelector(".high-scores");
 
 // Set the high scores to be hidden when the page is loaded
 highScoresEl.style.display = "none";
+
+// Define an element for the score report
+var scoreReportEl = document.querySelector("#score-report");
 
 
 // Quiz Timer
@@ -94,7 +97,6 @@ var myTimer = function () {
     }
     else {
         document.getElementById("count").innerHTML = "<h3>Time: " + count + "</h3>";
-        console.log(count);
         count--;
     }
 }
@@ -113,9 +115,7 @@ var showDiv = function(showID) {
 
 // Start button handler
 var startButtonHandler = function (event) {
-    console.log("click");
     var targetEl = event.target;
-    console.log(event.target);
     if (targetEl.matches(".start-btn")) {
         startTimer();
         hideDiv(".intro");
@@ -126,8 +126,8 @@ var startButtonHandler = function (event) {
 
 // A function to population the question and the answer buttons
 var createQuestion = function (questionID) {
-    console.log(questionID);
-    console.log(quizQuestions[questionID]);
+    // console.log(questionID);
+    // console.log(quizQuestions[questionID]);
     document.getElementById("question").innerHTML = quizQuestions[questionID].question;
     questionWrapperEl.querySelector("#opt1").textContent = quizQuestions[questionID].ans1;
     questionWrapperEl.querySelector("#opt2").textContent = quizQuestions[questionID].ans2;
@@ -135,37 +135,26 @@ var createQuestion = function (questionID) {
     questionWrapperEl.querySelector("#opt4").textContent = quizQuestions[questionID].ans4;
 }
 
-// // A function to start the quiz
-// var startQuiz = function() {
-//     var numQuestions = quizQuestions.length;
-//     console.log(numQuestions);
-//     var currentQuestion = 0;
-//     createQuestion(currentQuestion);
-// }
-
 // A function to check the answer
 var checkAnswer = function () {
-    console.log(currentQuestion);
+    // console.log(currentQuestion);
     var targetEl = event.target;
-    console.log(targetEl);
+    // console.log(targetEl);
     var answerChoice = targetEl.id;
-    console.log(answerChoice);
+    // console.log(answerChoice);
     var localCorrectAnswer = quizQuestions[currentQuestion].correctAnswer;
-    console.log(localCorrectAnswer);
+    // console.log(localCorrectAnswer);
     if (answerChoice === localCorrectAnswer) {
         document.getElementById("correct").innerHTML = "<p>The last answer was correct!</p>";
         points = points + 1;
         currentQuestion++;
-        console.log(currentQuestion);
     }
     else {
         document.getElementById("correct").innerHTML = "<p>The last answer was incorrect!</p>";
         count = count - 10;
         currentQuestion++;
-        console.log(currentQuestion);
     }
     if (currentQuestion >= totalQuestions || count < 0) {
-        console.log("It's Over!")
         endQuiz();
     }
 }
@@ -185,7 +174,7 @@ var endQuiz = function() {
     clearInterval(interval);
     hideDiv(".question-wrapper");
     showDiv(".outro")
-    pageContentEl.querySelector(".outro").innerHTML = "<h3>It's Over!</h3>";
+    scoreReportEl.textContent = "Your score is " + points +  ".";
 }
 
 // Event Listeners
