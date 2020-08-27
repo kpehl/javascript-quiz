@@ -22,12 +22,14 @@ var loadScores = function() {
 
     // Create a list item and append it to the list for each score
     for (var i = 0; i < scores.length; i++) {
-        console.log(scores.score)
-        console.log(scores.initials)
+        console.log(scores[i].score)
+        console.dir(scores[i].score)
+        console.log(scores[i].initials)
+        console.dir(scores[i].initials)
         // create the list element
         var scoreLi = document.createElement("li");
         // set the content to be Initials: Score
-        scoreLi.textContent = scores.initials + ": " + scores.score;
+        scoreLi.textContent = scores[i].initials + ": " + scores[i].score;
         // append the score to the list on the page
         scoreListEl.appendChild(scoreLi);
     }

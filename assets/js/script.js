@@ -218,8 +218,6 @@ var saveScore = function() {
 
     // Save the new high score list to localStorage
     localStorage.setItem("scores", JSON.stringify(scores));
-
-    alert("saved!")
 }
 
 
