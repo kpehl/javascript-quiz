@@ -12,6 +12,6 @@ JavaScript, HTML, CSS
 ## Screenshots
 ![screenshot](./assets/images/JavaScriptQuizIntro.png)
 
-![screenshot](.assets/images/JavaScriptQuizQuestion.png)
+![screenshot](./assets/images/JavaScriptQuizQuestion.png)
 
 ![screenshot](./assets/images/JavaScriptQuizHighScores.png)
