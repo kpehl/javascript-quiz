@@ -29,16 +29,16 @@ var question, ans1, ans2, ans3, ans4, correctAnswer
 
 // Question array
 var quizQuestions = [
-    {question: "Question 1", ans1: "Q1Answer1", ans2: "Q1Answer2", ans3: "Q1Answer3", ans4: "Q1Answer4", correctAnswer: "opt1"},
-    {question: "Question 2", ans1: "Q2Answer1", ans2: "Q2Answer2", ans3: "Q2Answer3", ans4: "Q2Answer4", correctAnswer: "opt1"},
-    {question: "Question 3", ans1: "Q3Answer1", ans2: "Q3Answer2", ans3: "Q3Answer3", ans4: "Q3Answer4", correctAnswer: "opt1"},
-    {question: "Question 4", ans1: "Q4Answer1", ans2: "Q4Answer2", ans3: "Q4Answer3", ans4: "Q4Answer4", correctAnswer: "opt1"},
-    {question: "Question 5", ans1: "Q5Answer1", ans2: "Q5Answer2", ans3: "Q5Answer3", ans4: "Q5Answer4", correctAnswer: "opt1"},
-    {question: "Question 6", ans1: "Q6Answer1", ans2: "Q6Answer2", ans3: "Q6Answer3", ans4: "Q6Answer4", correctAnswer: "opt1"},
-    {question: "Question 7", ans1: "Q7Answer1", ans2: "Q7Answer2", ans3: "Q7Answer3", ans4: "Q7Answer4", correctAnswer: "opt1"},
-    {question: "Question 8", ans1: "Q8Answer1", ans2: "Q8Answer2", ans3: "Q8Answer3", ans4: "Q8Answer4", correctAnswer: "opt1"},
-    {question: "Question 9", ans1: "Q9Answer1", ans2: "Q9Answer2", ans3: "Q9Answer3", ans4: "Q9Answer4", correctAnswer: "opt1"},
-    {question: "Question 10", ans1: "Q10Answer1", ans2: "Q10Answer2", ans3: "Q10Answer3", ans4: "Q10Answer4", correctAnswer: "opt1"}
+    {question: "What characters are used to start a comment in a JavaScript script file?", ans1: "//", ans2: "<--!", ans3: "'", ans4: "#", correctAnswer: "opt1"},
+    {question: "What is a good tool to use in your code to check that values are as expected?", ans1: ".innerHTML", ans2: "console.log", ans3: "break", ans4: "iterations", correctAnswer: "opt2"},
+    {question: "What characters surround the condition(s) in a while loop?", ans1: "Curly Brackets {}", ans2: "Square Brackets []", ans3: "Parentheses ()", ans4: "nothing  ", correctAnswer: "opt3"},
+    {question: "When an array is defined, what characters surround the array?", ans1: "Curly Brackets {}", ans2: "Square Brackets []", ans3: "Parentheses ()", ans4: "nothing  ", correctAnswer: "opt2"},
+    {question: "What will JavaScript assign to z in the following equation?   x = '1'    y = '2'   z = x + y?", ans1: "3", ans2: "'3'", ans3: "1 2", ans4: "12", correctAnswer: "opt4"},
+    {question: "JavaScript arrays can be used to store______.", ans1: "Numbers", ans2: "Strings", ans3: "Objects", ans4: "All of the Above", correctAnswer: "opt4"},
+    {question: "What characters enclose a code block to be executed in a function?", ans1: "Curly Brackets {}", ans2: "Square Brackets []", ans3: "Parentheses ()", ans4: "nothing  ", correctAnswer: "opt1"},
+    {question: "Which is NOT a 'falsy' value?", ans1: "NaN", ans2: "\"\"", ans3: "0", ans4: "'false'", correctAnswer: "opt4"},
+    {question: "When you want to specify several conditions in an if statement, what goes between them?", ans1: "||", ans2: "&&", ans3: "!", ans4: "!|", correctAnswer: "opt2"},
+    {question: "What characters enclose a JavaScript object?", ans1: "Curly Brackets {}", ans2: "Square Brackets []", ans3: "Parentheses ()", ans4: "nothing  ", correctAnswer: "opt1"}
 ]
 
 
