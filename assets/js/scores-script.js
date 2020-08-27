@@ -11,21 +11,15 @@ var loadScores = function() {
     // if the localStorage does not have any values, set array to empty, otherwise parse into object
     if (!scores) {
         var scores = [];
-        console.log("no scores saved")
+        scoreListEl.style.display = "none";
     }
     else {
+        scoreListEl.style.display = "block";
         scores = JSON.parse(scores);
-        console.log(scores)
     }
-
-    console.log(scores.length)
 
     // Create a list item and append it to the list for each score
     for (var i = 0; i < scores.length; i++) {
-        console.log(scores[i].score)
-        console.dir(scores[i].score)
-        console.log(scores[i].initials)
-        console.dir(scores[i].initials)
         // create the list element
         var scoreLi = document.createElement("li");
         // set the content to be Initials: Score
@@ -42,6 +36,6 @@ var loadScores = function() {
 
 var clearScoresEl = document.querySelector("#clear-data");
 
-clearScoresEl.addEventListener("click", function() {localStorage.clear()});
+clearScoresEl.addEventListener("click", function() {localStorage.clear(); location.reload();});
 
 loadScores();

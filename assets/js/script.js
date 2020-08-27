@@ -218,6 +218,9 @@ var saveScore = function() {
 
     // Save the new high score list to localStorage
     localStorage.setItem("scores", JSON.stringify(scores));
+
+    // After the high score is saved, take the user to the high score page to see their name
+    location.assign("./high-scores.html");
 }
 
 
