@@ -18,12 +18,17 @@ var loadScores = function() {
         scores = JSON.parse(scores);
     }
 
+    // Sort the array by points and then by most time remaining
+    scores.sort((a, b) => 
+        b.score - a.score || b.time - a.time
+    )
+
     // Create a list item and append it to the list for each score
     for (var i = 0; i < scores.length; i++) {
         // create the list element
         var scoreLi = document.createElement("li");
         // set the content to be Initials: Score
-        scoreLi.textContent = scores[i].initials + ": " + scores[i].score + " correct in " + scores[i].time + " seconds";
+        scoreLi.textContent = scores[i].initials + ": " + scores[i].score + " correct with " + scores[i].time + " seconds remaining";
         // append the score to the list on the page
         scoreListEl.appendChild(scoreLi);
     }
