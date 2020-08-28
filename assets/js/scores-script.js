@@ -23,7 +23,7 @@ var loadScores = function() {
         // create the list element
         var scoreLi = document.createElement("li");
         // set the content to be Initials: Score
-        scoreLi.textContent = scores[i].initials + ": " + scores[i].score;
+        scoreLi.textContent = scores[i].initials + ": " + scores[i].score + " correct in " + scores[i].time + " seconds";
         // append the score to the list on the page
         scoreListEl.appendChild(scoreLi);
     }

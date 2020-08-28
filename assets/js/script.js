@@ -37,7 +37,7 @@ var quizQuestions = [
     {question: "JavaScript arrays can be used to store______.", ans1: "Numbers", ans2: "Strings", ans3: "Objects", ans4: "All of the Above", correctAnswer: "opt4"},
     {question: "What characters enclose a code block to be executed in a function?", ans1: "Curly Brackets {}", ans2: "Square Brackets []", ans3: "Parentheses ()", ans4: "nothing  ", correctAnswer: "opt1"},
     {question: "Which is NOT a 'falsy' value?", ans1: "NaN", ans2: "\"\"", ans3: "0", ans4: "'false'", correctAnswer: "opt4"},
-    {question: "When you want to specify several conditions in an if statement, what goes between them?", ans1: "||", ans2: "&&", ans3: "!", ans4: "!|", correctAnswer: "opt2"},
+    {question: "When you want to specify several required conditions in an if statement, what goes between them?", ans1: "||", ans2: "&&", ans3: "!", ans4: "!|", correctAnswer: "opt2"},
     {question: "What characters enclose a JavaScript object?", ans1: "Curly Brackets {}", ans2: "Square Brackets []", ans3: "Parentheses ()", ans4: "nothing  ", correctAnswer: "opt1"}
 ]
 
@@ -200,6 +200,7 @@ var saveScore = function() {
     var scoreDataObj = {
         score: points,
         initials: scoreInitialsInput,
+        time: count
     };
 
     // retrieve the current high score list
